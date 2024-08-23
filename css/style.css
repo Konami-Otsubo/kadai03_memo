@@ -9,35 +9,34 @@ body {
 /* ヘッダーのスタイル */
 header {
     text-align: center;
-    padding: 1px;
+    padding: 3px; /* 十分な上下のパディング */
     background-color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 3px;
-    max-width: 1200px; /* タイトルが1200pxに収まるように設定 */
-    margin-left: auto; /* 左右の中央に配置 */
+    margin-bottom: 3px; /* ヘッダー下の余白 */
+    max-width: 1200px; 
+    margin-left: auto; 
     margin-right: auto;
 }
 
 /* ギャラリーのスタイル */
 .gallery {
-    display: flex; /* Flexboxを使用して横並びにする */
-    flex-wrap: wrap; /* 横に入りきらない場合に改行する */
-    justify-content: center; /* 中央揃えにする */
-    gap: 10px; /* 画像間の隙間 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.9);
-    max-width: 1200px; /* ギャラリーの幅を画面幅に応じて調整 */
-    margin: 0 auto; /* 中央に配置 */
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
 .gallery-item {
-    flex: 1 1 0%; /* 各画像が8%の幅を取る（およそ12個が横並び） */
-    max-width: 150px; /* 画像の最大幅を設定 */
+    flex: 1 1 100px; /* 各画像の幅を固定 */
+    max-width: 150px;
 }
 
 .gallery-item img {
-    width: 100%; /* 親要素に合わせて画像を調整 */
-    height: auto; /* アスペクト比を保ったまま高さを自動調整 */
-    
+    width: 100%; 
+    height: auto; 
 }
 
 .gallery-item img:hover {
@@ -47,8 +46,8 @@ header {
 
 /* 日誌表示エリアのスタイル */
 #diary {
-    margin-top: 3px;
-    padding: 3px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     max-width: 1200px;
@@ -60,14 +59,14 @@ header {
 
 #header-content {
     display: flex;
-    justify-content: center; /* 中央に配置 */
+    justify-content: center;
     align-items: center;
-    margin-bottom: 3px; /* 下のマージンを少し減らす */
+    margin-bottom: 5px;
 }
 
 #header-content h2 {
-    margin: 1px 0; /* 上下のマージンを減らす */
-    text-align: center; /* テキストを中央に揃える */
+    margin: 5px 0;
+    text-align: center;
 }
 
 #selected-date {
@@ -82,59 +81,60 @@ header {
 
 .form-row {
     display: flex;
-    justify-content: space-between; /* 各要素を同じ行に配置 */
-    margin-bottom: 10px; /* 行ごとの間隔を設定 */
+    justify-content: space-between; 
+    margin-bottom: 10px; 
 }
 
 .form-row label {
-    margin-right: 10px; /* ラベルと入力欄の間隔を設定 */
+    margin-right: 10px; 
 }
 
 #date {
-    flex: 0 0 50px; /* 月日の入力欄を固定幅に設定 */
+    flex: 0 0 80px; /* 月日の入力欄を少し広げる */
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    margin-right: 10px; /* 次の要素との間隔を設定 */
-    font-size: 16px; /* 文字のサイズを大きく設定 */
+    font-size: 16px;
 }
 
 #task {
-    flex: 1; /* 作業内容の入力欄を可能な限り広げる */
+    flex: 1; 
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    font-size: 16px; /* 文字のサイズを大きく設定 */
+    font-size: 16px;
 }
 
 #diary label {
     font-weight: bold;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 #details {
     height: 50px; 
+    margin-bottom: 5px; /* 下部の余白を少し追加 */
 }
 
 #notes {
-    height: 35px;    
+    height: 35px;
+    margin-bottom: 10px; /* 保存ボタンとの間隔を狭く */
 }
 
 #details, #notes {
-    width: 100%;    
+    width: 100%;
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    font-size: 16px; /* 文字サイズを設定 */    
-    vertical-align: middle; /* 縦方向の中央揃え */
+    font-size: 16px;    
+    vertical-align: middle;
 }
 
 #save {
-    margin-top: 1px; /* 「気づいたこと」との間隔を狭く */
+    margin-top: 5px; /* 間隔を狭く */
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
