@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>野菜栽培日誌</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.1.3.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>野菜栽培日誌(2022/4～7)</h1>
+    </header>
+
+    <div class="gallery">
+        <div class="gallery-item"><img src="img/20220413.jpg" alt="2022/4/13" data-entry="entry1"></div>
+        <div class="gallery-item"><img src="img/20220505.jpg" alt="2022/5/5" data-entry="entry2"></div>
+        <div class="gallery-item"><img src="img/20220511.jpg" alt="2022/5/11" data-entry="entry3"></div>
+        <div class="gallery-item"><img src="img/20220518.jpg" alt="2022/5/18" data-entry="entry4"></div>
+        <div class="gallery-item"><img src="img/20220602.jpg" alt="2022/6/2" data-entry="entry5"></div>
+        <div class="gallery-item"><img src="img/20220616.jpg" alt="2022/6/16" data-entry="entry6"></div>
+        <div class="gallery-item"><img src="img/20220622.jpg" alt="2022/6/22" data-entry="entry7"></div>
+        <div class="gallery-item"><img src="img/20220630.jpg" alt="2022/6/30" data-entry="entry8"></div>
+        <div class="gallery-item"><img src="img/20220707.jpg" alt="2022/7/7" data-entry="entry9"></div>
+        <div class="gallery-item"><img src="img/20220712.jpg" alt="2022/7/12" data-entry="entry10"></div>
+    </div>
+
+    <div id="diary">
+        <div id="header-content">
+            <h2>日誌内容</h2>
+            <p id="selected-date">写真をクリックしてください。</p>
+        </div>
+        <div id="form-content">
+            <div class="form-row">
+                <label for="date">月日:</label>
+                <input type="text" id="date">
+                <label for="task">作業内容:</label>
+                <input type="text" id="task">
+            </div>
+            <label for="details">詳細:</label>
+            <textarea id="details" rows="3"></textarea><br>
+            <label for="notes">気づいたこと:</label>
+            <textarea id="notes" rows="2"></textarea><br>
+            <button id="save">保存</button>
+        </div>
+    </div>
+
+    <script>
+       $(document).ready(function() {
+    // 画像をクリックしたときの処理
+    $('.gallery img').click(function() {
+        const entryKey = $(this).data('entry');
+        $('#selected-date').text(`選択された日付: ${$(this).attr('alt')}`);
+        loadDiary(entryKey);
+    });
+
+    // 日誌データの読み込み
+    function loadDiary(entryKey) {
+        const storedData = JSON.parse(localStorage.getItem(entryKey));
+        if (storedData) {
+            $('#date').val(storedData.date || '');
+            $('#task').val(storedData.task || '');
+            $('#details').val(storedData.details || '');
+            $('#notes').val(storedData.notes || '');
+        } else {
+            $('#date').val('');
+            $('#task').val('');
+            $('#details').val('');
+            $('#notes').val('');
+        }
+    }
+
+    // 日誌データの保存
+    $('#save').click(function() {
+        const entryKey = $('.gallery img[alt="' + $('#selected-date').text().replace('選択された日付: ', '') + '"]').data('entry');
+        if (entryKey) {
+            const diaryData = {
+                date: $('#date').val(),
+                task: $('#task').val(),
+                details: $('#details').val(),
+                notes: $('#notes').val()
+            };
+            localStorage.setItem(entryKey, JSON.stringify(diaryData));
+            alert('日誌を保存しました！');
+        } else {
+            alert('写真を選択してください。');
+        }
+    });
+
+    // 中央揃え設定
+    $('#details, #notes').css({
+        'line-height': '20px',  // 高さに応じて調整
+        'vertical-align': 'middle'
+    });
+
+    // スタイルの調整
+    $('#notes').css({
+        'margin-bottom': '3px'  // 保存ボタンとの間隔を狭くする
+    });
+
+    $('#save').css({
+        'margin-top': '3px'  // 「気づいたこと」との間隔を狭くする
+    });
+});
+    </script>
+
+</body>
+
+</html>
